@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let a = 10;
+        console.log(a);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Ask confirmation from the user when they click anywhere on the page
+            document.body.addEventListener('click', (event) => {
+                const confirmed = confirm('Do you want to proceed?');
+                if (confirmed) {
+                    console.log('User confirmed');
+                } else {
+                    console.log('User canceled');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    I am learning JavaScript!
+</body>
+</html>
