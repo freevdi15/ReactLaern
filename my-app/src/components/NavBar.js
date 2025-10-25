@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function NavBar(props) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
       <div className="container-fluid">
         <a className="navbar-brand" href="/">{props.title}</a>
         <button
@@ -28,6 +28,18 @@ export default function NavBar(props) {
               <a className="nav-link" href="/">Contact</a>
             </li>
           </ul>
+          <div className={`form-check form-switch text-${props.mode === 'dark' ? 'white' : 'dark'} ms-auto`}>
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="darkModeSwitch"
+              onChange={props.toggleMode}
+              checked={props.mode === 'dark'}
+            />
+            <label className="form-check-label" htmlFor="darkModeSwitch">
+              Enable Dark Mode
+            </label>
+          </div>
         </div>
       </div>
     </nav>
