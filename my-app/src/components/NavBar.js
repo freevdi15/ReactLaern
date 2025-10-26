@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function NavBar(props) {
   return (
     <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">{props.title}</a>
+        <Link className="navbar-brand" to="/">{props.title}</Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -19,13 +20,13 @@ export default function NavBar(props) {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="/">Home</a>
+              <Link className="nav-link active" aria-current="page" to="/">Home</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">About</a>
+              <Link className="nav-link" to="/about">About</Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">Contact</a>
+              <Link className="nav-link" to="/contact">Contact</Link>
             </li>
           </ul>
           <div className={`form-check form-switch text-${props.mode === 'dark' ? 'white' : 'dark'} ms-auto`}>

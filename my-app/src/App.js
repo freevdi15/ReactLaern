@@ -4,6 +4,11 @@ import Alert from './components/Alert';
 import NavBar from './components/NavBar';
 import TextForm from './components/TextForm';
 import React, { useState } from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from 'react-router-dom';
 
 function App() {
   const [mode, setMode] = useState('dark'); // Default mode is dark
@@ -23,6 +28,7 @@ function App() {
 
   const showAlert = (message, type) => {
     setAlert({ message, type });
+    setTimeout(() => setAlert(null), 2000); // Auto-dismiss alert after 2 seconds
   };
 
   const dismissAlert = () => {
@@ -30,14 +36,16 @@ function App() {
   };
 
   return (
-    <>
+    <Router>
       <NavBar title="BeRealEstate" aboutText="Know more about the team" mode={mode} toggleMode={toggleMode} />
       <Alert alert={alert} dismissAlert={dismissAlert} /> {/* Pass dismissAlert as a prop */}
       <div className="container my-4">
-        <TextForm heading="Enter your details" mode={mode} showAlert={showAlert} />
+        <Routes>
+          <Route path="/about" element={<About mode={mode} />} />
+          <Route path="/" element={<TextForm heading="Enter your details" mode={mode} showAlert={showAlert} />} />
+        </Routes>
       </div>
-      <About mode={mode} />
-    </>
+    </Router>
   );
 }
 
